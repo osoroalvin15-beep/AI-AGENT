@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="400" height="320">
+<rect width="400" height="320" fill="#05040a"/>
+                <defs>
+                    <!-- Linear Gradients -->
+                    <linearGradient id="cyberGradPrimary" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00f3ff" />
+                        <stop offset="50%" stop-color="#9d00ff" />
+                        <stop offset="100%" stop-color="#ff007f" />
+                    </linearGradient>
+
+                    <linearGradient id="cyberGradAccent" x1="100%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#ff007f" />
+                        <stop offset="100%" stop-color="#00f3ff" />
+                    </linearGradient>
+
+                    <!-- Neon Glow Filter -->
+                    <filter id="svgGlow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="8" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                </defs>
+
+                <!-- Dynamic Rotating Core Geometry SVG Group -->
+                <g id="svgLogoMark" transform="translate(200, 120)">
+                    
+                    <!-- Hexagonal Outer Shield Frame -->
+                    <polygon points="0,-75 65,-37.5 65,37.5 0,75 -65,37.5 -65,-37.5" fill="none" stroke="url(#cyberGradPrimary)" stroke-width="4" filter="url(#svgGlow)"/>
+                    
+                    <!-- Inner Hex Ring -->
+                    <polygon points="0,-55 47,-27.5 47,27.5 0,55 -47,27.5 -47,-27.5" fill="none" stroke="#00f3ff" stroke-width="1.5" stroke-dasharray="8 4" opacity="0.8"/>
+
+                    <!-- Abstract Central AI Monogram Node -->
+                    <path d="M-30,20 L0,-40 L30,20 L0,0 Z" fill="url(#cyberGradAccent)"/>
+                    <circle cx="0" cy="0" r="10" fill="#ffffff" filter="url(#svgGlow)"/>
+
+                    <!-- Corner Circuit Node Rays -->
+                    <circle cx="0" cy="-75" r="4" fill="#00f3ff"/>
+                    <circle cx="65" cy="37.5" r="4" fill="#ff007f"/>
+                    <circle cx="-65" cy="37.5" r="4" fill="#9d00ff"/>
+                </g>
+
+                <!-- Vector Typography -->
+                <text x="200" y="245" font-family="Orbitron, 'Arial Black', sans-serif" font-size="28" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="6">CYBERNEST</text>
+                <text x="200" y="272" font-family="'Space Grotesk', Arial, sans-serif" font-size="12" font-weight="700" fill="#00f3ff" text-anchor="middle" letter-spacing="4" opacity="0.9">LIVE AI INTELLIGENCE</text>
+            </svg>

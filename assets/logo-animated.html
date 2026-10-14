@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live AI Animated Logo</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #05040a;
+            color: #ffffff;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .font-orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Ambient Glow Pulse */
+        .glow-filter {
+            filter: drop-shadow(0 0 18px rgba(0, 243, 255, 0.4)) drop-shadow(0 0 35px rgba(157, 0, 255, 0.3));
+        }
+
+        /* Continuous gentle hover animation */
+        @keyframes float-gentle {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-8px) scale(1.015); }
+        }
+
+        .animate-float {
+            animation: float-gentle 6s ease-in-out infinite;
+        }
+
+        /* Shockwave Ripple Burst Effect on Click */
+        .shockwave {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 243, 255, 0.8);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.6), inset 0 0 20px rgba(255, 0, 127, 0.6);
+            pointer-events: none;
+            animation: shockwave-expand 0.8s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+        }
+
+        @keyframes shockwave-expand {
+            0% {
+                width: 0px;
+                height: 0px;
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(0.2);
+            }
+            100% {
+                width: 600px;
+                height: 600px;
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex items-center justify-center relative overflow-hidden">
+
+    <!-- Interactive Canvas Particle / Shockwave Stage Layer -->
+    <canvas id="liveFxCanvas" class="absolute inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+    <!-- Main Live Animated Logo Card Target -->
+    <div id="logoInteractiveWrapper" class="relative z-10 cursor-pointer flex flex-col items-center justify-center p-8 sm:p-12 transition-transform duration-300 active:scale-95 animate-float group">
+        
+        <!-- Ambient Backlight Aura -->
+        <div class="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-indigo-600/30 via-purple-600/20 to-cyan-500/30 blur-3xl -z-10 group-hover:scale-125 transition-transform duration-700 ease-out opacity-70"></div>
+
+        <!-- High Resolution Vector Logo Mark & Typography -->
+        <div class="glow-filter transition-all duration-500 group-hover:drop-shadow-[0_0_35px_rgba(0,243,255,0.7)]">
+            <svg id="mainLogoSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" class="w-[320px] h-[256px] sm:w-[460px] sm:h-[368px] select-none">
+                <defs>
+                    <!-- Linear Gradients -->
+                    <linearGradient id="cyberGradPrimary" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00f3ff" />
+                        <stop offset="50%" stop-color="#9d00ff" />
+                        <stop offset="100%" stop-color="#ff007f" />
+                    </linearGradient>
+
+                    <linearGradient id="cyberGradAccent" x1="100%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#ff007f" />
+                        <stop offset="100%" stop-color="#00f3ff" />
+                    </linearGradient>
+
+                    <!-- Neon Glow Filter -->
+                    <filter id="svgGlow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="8" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                </defs>
+
+                <!-- Dynamic Rotating Core Geometry SVG Group -->
+                <g id="svgLogoMark" transform="translate(200, 120)">
+                    
+                    <!-- Hexagonal Outer Shield Frame -->
+                    <polygon points="0,-75 65,-37.5 65,37.5 0,75 -65,37.5 -65,-37.5" fill="none" stroke="url(#cyberGradPrimary)" stroke-width="4" filter="url(#svgGlow)"/>
+                    
+                    <!-- Inner Hex Ring -->
+                    <polygon points="0,-55 47,-27.5 47,27.5 0,55 -47,27.5 -47,-27.5" fill="none" stroke="#00f3ff" stroke-width="1.5" stroke-dasharray="8 4" opacity="0.8"/>
+
+                    <!-- Abstract Central AI Monogram Node -->
+                    <path d="M-30,20 L0,-40 L30,20 L0,0 Z" fill="url(#cyberGradAccent)"/>
+                    <circle cx="0" cy="0" r="10" fill="#ffffff" filter="url(#svgGlow)"/>
+
+                    <!-- Corner Circuit Node Rays -->
+                    <circle cx="0" cy="-75" r="4" fill="#00f3ff"/>
+                    <circle cx="65" cy="37.5" r="4" fill="#ff007f"/>
+                    <circle cx="-65" cy="37.5" r="4" fill="#9d00ff"/>
+                </g>
+
+                <!-- Vector Typography -->
+                <text x="200" y="245" font-family="'Orbitron', sans-serif" font-size="28" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="6">CYBERNEST</text>
+                <text x="200" y="272" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" fill="#00f3ff" text-anchor="middle" letter-spacing="4" opacity="0.9">LIVE AI INTELLIGENCE</text>
+            </svg>
+        </div>
+
+    </div>
+
+    <!-- CANVAS FX & INTERACTION ENGINE -->
+    <script>
+        /**
+         * Standalone Live AI Canvas Engine & Particle Dynamics
+         */
+        const canvas = document.getElementById('liveFxCanvas');
+        const ctx = canvas.getContext('2d');
+        const logoWrapper = document.getElementById('logoInteractiveWrapper');
+
+        let particles = [];
+        let shockwaves = [];
+        let mouse = { x: null, y: null, isHovering: false };
+
+        // Colors
+        const colors = ['#00f3ff', '#9d00ff', '#ff007f', '#ffffff'];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth * window.devicePixelRatio;
+            canvas.height = window.innerHeight * window.devicePixelRatio;
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+            createParticles();
+        }
+
+        window.addEventListener('resize', () => {
+            initCanvas();
+        });
+
+        // Initialize Ambient Matrix Particles
+        function createParticles() {
+            particles = [];
+            const count = Math.floor((window.innerWidth * window.innerHeight) / 18000);
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    size: Math.random() * 2.5 + 0.8,
+                    speedX: (Math.random() - 0.5) * 0.8,
+                    speedY: (Math.random() - 0.5) * 0.8,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    opacity: Math.random() * 0.6 + 0.2
+                });
+            }
+        }
+
+        // Particle Shockwave Burst on Click/Tap
+        function triggerEnergyBurst(e) {
+            const rect = logoWrapper.getBoundingClientRect();
+            const clickX = e.clientX || (rect.left + rect.width / 2);
+            const clickY = e.clientY || (rect.top + rect.height / 2);
+
+            // Spawn shockwave ring DOM element
+            const wave = document.createElement('div');
+            wave.className = 'shockwave';
+            wave.style.left = clickX + 'px';
+            wave.style.top = clickY + 'px';
+            document.body.appendChild(wave);
+
+            setTimeout(() => wave.remove(), 800);
+
+            // Burst Canvas Particles
+            for (let i = 0; i < 40; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 6 + 2;
+                particles.push({
+                    x: clickX,
+                    y: clickY,
+                    size: Math.random() * 3.5 + 1.5,
+                    speedX: Math.cos(angle) * speed,
+                    speedY: Math.sin(angle) * speed,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    opacity: 1,
+                    life: 60
+                });
+            }
+        }
+
+        logoWrapper.addEventListener('click', triggerEnergyBurst);
+
+        // Hover Effect Tracking
+        logoWrapper.addEventListener('mouseenter', () => mouse.isHovering = true);
+        logoWrapper.addEventListener('mouseleave', () => mouse.isHovering = false);
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        // Main Animation Loop
+        let angleTime = 0;
+        function animate(timestamp) {
+            angleTime += 0.015;
+
+            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+            const cx = window.innerWidth / 2;
+            const cy = window.innerHeight / 2;
+
+            // 1. Render Ambient Dynamic Pulsing Orbit Rings Behind Logo
+            ctx.save();
+            ctx.translate(cx, cy);
+
+            for (let i = 1; i <= 3; i++) {
+                const radius = 130 + i * 45 + Math.sin(angleTime * 2 + i) * 8;
+                ctx.strokeStyle = i === 1 ? '#00f3ff' : (i === 2 ? '#9d00ff' : '#ff007f');
+                ctx.lineWidth = i === 1 ? 2 : 1;
+                ctx.globalAlpha = (0.25 / i) * (mouse.isHovering ? 1.8 : 1.0);
+                
+                ctx.rotate((angleTime * 0.2 * (i % 2 === 0 ? 1 : -1)));
+                ctx.beginPath();
+                ctx.ellipse(0, 0, radius, radius * 0.75, i * 0.5, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+            ctx.restore();
+
+            // 2. Render and Update Particles
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+
+                p.x += p.speedX;
+                p.y += p.speedY;
+
+                // Burst particles decay over life
+                if (p.life !== undefined) {
+                    p.life--;
+                    p.opacity = p.life / 60;
+                    if (p.life <= 0) {
+                        particles.splice(i, 1);
+                        continue;
+                    }
+                } else {
+                    // Wrap ambient background particles
+                    if (p.x < 0) p.x = window.innerWidth;
+                    if (p.x > window.innerWidth) p.x = 0;
+                    if (p.y < 0) p.y = window.innerHeight;
+                    if (p.y > window.innerHeight) p.y = 0;
+                }
+
+                ctx.save();
+                ctx.globalAlpha = p.opacity;
+                ctx.fillStyle = p.color;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = p.color;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        // Initialize & Run
+        window.onload = () => {
+            initCanvas();
+            requestAnimationFrame(animate);
+        };
+    </script>
+</body>
+</html>
